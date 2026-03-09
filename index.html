@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KFC, It's finger lickin' good!</title>
+</head>
+<body>
+  <h1 id="result"></h1>
+
+  <script>
+    // var oldWay = "0";
+    // let newWayDynamic = 0;
+
+    // if (oldWay === newWayDynamic) {
+    //   document.getElementById("result").innerText = "They are equal!";
+    // } else {
+    //   document.getElementById("result").innerText = "They are not equal!";
+    // }
+
+    // if (oldWay === newWayDynamic) {
+    //   console.log("They are equal!");
+    // } else {
+    //   console.log("They are not equal!");
+    // }
+    
+    // const students = ["Alice" , "Bob" , "Charlie"];
+    // console.log(students[1]);
+    // students[1] = "Katy";
+    // console.log(students[1]); 
+
+    //  for (let i = 1; i < students.length; i++) {
+    //   console.log("Student " + i + ": " + students[i]);
+    // }
+
+    // // students.forEach(student => {
+    // //   console.log(student);
+    // // });
+
+    // function logBob(index) {
+    //     console.log(students[index]);
+    // }
+
+    
+    const students = [
+  {
+    firstName: "Bob",
+    lastName: "Smith",
+    Address: "21 Spooner St.",
+  },
+  {
+    firstName: "Alice",
+    lastName: "Salvador",
+    Address: "Quahog City.",
+  },
+  {
+    firstName: "Miriam",
+    lastName: "Harley",
+    Address: "Quahog City.",
+  },
+  {
+    firstName: "Jesse",
+    lastName: "Grimes",
+    Address: "Arcadia, Michigan.",
+  }
+];
+
+
+students.forEach((student) => {
+  console.log(
+    `${student.firstName} ${student.lastName} lives in ${student.Address}`
+  );
+});
+
+
+const bob = students.find((student) => student.firstName === "Bob");
+
+console.log(
+  `Found ${bob.firstName} ${bob.lastName} who lives in ${bob.Address}`
+);
+
+
+const quahogResidents = students.filter(
+  (student) => student.Address.includes("Quahog")
+);
+
+const spoonerResidents = students.filter(
+  (student) => student.Address.includes("Spooner")
+);
+
+console.log("Students are from Quahog");
+quahogResidents.forEach((student) =>
+  console.log( `${student.firstName} ${student.lastName}` ),
+);
+
+if(quahogResidents.length > 0){
+  console.log("There are students from Quahog");
+}else{
+  console.log("There are no students from Quahog");
+
+}
+
+
+const hasStudentsFromSpooner = quahogResidents ? true : false;
+console.log(hasStudentsFromSpooner);
+
+     spoonerResidents
+     ? console.log("There are students from Spooner") : "There are no students from spooner";
+ 
+  
+    // logBob(0);
+
+
+
+
+    // students.forEach(student => {
+    //   if (student === "Bob") {
+    //     console.log("Found Bob!");
+    //   } else {
+    //     console.log("Not Bob");
+    //   }
+    // });
+
+
+
+
+
+
+  </script>
+</body>
+</html>
+
+
+
+//it says guillible on the ceiling.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
