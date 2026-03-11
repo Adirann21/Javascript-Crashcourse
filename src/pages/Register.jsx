@@ -6,14 +6,30 @@ import PageWrapper from "../components/PageWrapper";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import { Form } from "react-router";
+import { useState } from "react";
+import supabase from "..utils/supabase";
 
 const Register = () => {
+
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
 
   const handleInputChange = (event) => {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     console.log(inputName, inputValue);
+
+    setFormData({...formData, [inputName]: inputValue });
   };
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+};
 
   return (
     <PageWrapper>
@@ -54,7 +70,10 @@ const Register = () => {
               placeholder="Enter your Password"
               onChange={handleInputChange}
             />
-            <button type="submit" className="btn btn-primary w-full mt-4">
+            <button 
+            className="btn btn-primary w-full mt-4"
+              onClick={handleSubmit}
+            >
                 Submit
               </button>
             </form>
