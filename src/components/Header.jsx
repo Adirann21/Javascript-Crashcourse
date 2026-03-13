@@ -1,13 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router";
 import HeaderNavLink from "./HeaderNavLink";
+import supabase from "../utils/supabase";
 //rafce
 const Header = () => {
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) alert(error);
+    };
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="flex max-w-7xl mx-auto w-full">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl px-0">DaisyUI</a>
+                    <a className="btn btn-ghost text-xl px-0">daisyUI</a>
                 </div>
                 <div className="flex-none">
                     <HeaderNavLink to="/" linkText="Home" />
@@ -39,14 +45,13 @@ const Header = () => {
                                 <a>Settings</a>
                             </li>
                             <li>
-                                <a>Logout</a>
+                                <button onClick={handleLogout}>Logout</button>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-		
     );
 };
 
