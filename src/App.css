@@ -1,7 +1,275 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* PUNTA KAYO SA DAISYUI TAS GAWA KAYO SARILI NYONG TEMPLATE */
-/* WAG KAYO GAGAMIT NG COFFEE AT CARAMELLATTE KASI YUN NA GAMIT KO LMAO */
-/* npm install lucide-react RIN KAYO PARA GUMANA UNG CUSTOM ICONS OTHERWISE MAGKAKARON ERROR TO */
-/* MAAYOS NAMAN COMMENTS NG MGA SINEND KO TINGIN TINGIN NLNG KAYO PARA SA PAG DESIGN */
+/* White + Dark Green Theme */
+[data-theme="blackred"] {
+  --bc: 0 0% 100%;
+  --b1: 0 0% 98%;
+  --b2: 0 0% 96%;
+  --b3: 0 0% 94%;
+  --n: 140 30% 15%;
+  --nf: 140 30% 10%;
+  --pc: 160 80% 25%;
+  --p: 160 80% 25%;
+  --sc: 0 0% 95%;
+  --s: 0 0% 20%;
+  --a: 160 80% 25%;
+  --ac: 0 0% 95%;
+  --base-100: 0 0% 100%;
+  --base-200: 0 0% 98%;
+  --base-300: 0 0% 96%;
+  --base-content: 160 80% 20%;
+  --neutral-content: 160 80% 20%;
+
+  /* Border / outline colors */
+  --border: 160 80% 20%;
+  --border-base-100: 160 80% 20%;
+  --border-base-200: 160 80% 20%;
+  --border-base-300: 160 80% 20%;
+
+  /* Custom helpers used in the layout (header gradients, etc.) */
+  --color-primary: #064e3b;
+  --color-secondary: #0f766e;
+  --color-base: #ffffff;
+
+  color-scheme: light;
+}
+
+html[data-theme="blackred"], body {
+  background: #ffffff !important;
+}
+
+/* Ensure root container also stays white */
+#root {
+  background: #ffffff !important;
+}
+
+/* Keep navbar and cards white with dark green outline */
+[data-theme="blackred"] .navbar {
+  background-color: #ffffff !important;
+  border-bottom: 2px solid #064e3b !important;
+}
+
+[data-theme="blackred"] .card {
+  background: #ffffff !important;
+  border: 1px solid #064e3b !important;
+  box-shadow: none;
+  color: #064e3b !important;
+}
+
+/* Keep card body transparent so underlying card fill shows */
+[data-theme="blackred"] .card-body {
+  background: transparent !important;
+}
+
+/* Force all text to dark green in this theme */
+[data-theme="blackred"] .text-base-content,
+[data-theme="blackred"] .text-white,
+[data-theme="blackred"] * {
+  color: #064e3b !important;
+}
+
+/* Ensure utility text classes also use dark green */
+[data-theme="blackred"] .text-primary,
+[data-theme="blackred"] .text-secondary,
+[data-theme="blackred"] .text-accent,
+[data-theme="blackred"] .text-success,
+[data-theme="blackred"] .text-error,
+[data-theme="blackred"] .text-warning {
+  color: #064e3b !important;
+}
+
+[data-theme="blackred"] .navbar-logo {
+  border: none !important;
+  background: transparent !important;
+}
+
+[data-theme="blackred"] .btn {
+  border: 2px solid #064e3b;
+  background: #ffffff;
+  color: #064e3b;
+}
+
+/* Primary buttons should be dark green with white text */
+[data-theme="blackred"] .btn.btn-primary,
+[data-theme="blackred"] .btn-primary {
+  background: hsl(160, 80%, 20%) !important;
+  color: #ffffff !important;
+  border-color: hsl(160, 80%, 20%) !important;
+}
+
+/* Outline/ghost buttons should have white background with green border */
+[data-theme="blackred"] .btn.btn-outline,
+[data-theme="blackred"] .btn.btn-ghost,
+[data-theme="blackred"] .btn.bg-white {
+  background: #ffffff !important;
+  color: hsl(210, 15%, 18%) !important;
+  border-color: hsl(160, 80%, 20%) !important;
+}
+
+/* Small icon buttons should have no box and stay transparent */
+[data-theme="blackred"] .btn.btn-sm,
+[data-theme="blackred"] .btn.btn-circle {
+  background: transparent !important;
+  color: hsl(210, 15%, 18%) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.35rem !important;
+  min-width: auto !important;
+}
+
+[data-theme="blackred"] .btn:hover {
+  background: #064e3b;
+  color: #064e3b;
+}
+
+/* Ensure any borders/outlines appear dark green in this theme */
+[data-theme="blackred"] .border,
+[data-theme="blackred"] .border-base-100,
+[data-theme="blackred"] .border-base-200,
+[data-theme="blackred"] .border-base-300,
+[data-theme="blackred"] .outline,
+[data-theme="blackred"] .ring {
+  border-color: #064e3b !important;
+  outline-color: #064e3b !important;
+}
+
+/* Remove rounded/clipped corners so boxes render cleanly */
+[data-theme="blackred"] .card,
+[data-theme="blackred"] .card-body,
+[data-theme="blackred"] .modal-box,
+[data-theme="blackred"] .navbar,
+[data-theme="blackred"] .dropdown-content,
+[data-theme="blackred"] .btn,
+[data-theme="blackred"] .input {
+  border-radius: 0 !important;
+  clip-path: none !important;
+  overflow: visible !important;
+}
+
+/* Style input fields to match the light background */
+[data-theme="blackred"] input,
+[data-theme="blackred"] textarea,
+[data-theme="blackred"] select {
+  background-color: #ffffff !important;
+  color: hsl(210, 15%, 18%) !important;
+  border: 1px solid hsl(160, 80%, 20%) !important;
+}
+
+[data-theme="blackred"] input::placeholder {
+  color: hsl(210, 15%, 18%) !important;
+  opacity: 0.5;
+}
+
+[data-theme="blackred"] .card {
+  border: 1px solid hsl(160, 80%, 20%) !important;
+  background: #ffffff !important;
+}
+
+/* Search bar input styling */
+[data-theme="blackred"] .input-bordered,
+[data-theme="blackred"] .input[type="search"],
+[data-theme="blackred"] .input[type="text"],
+[data-theme="blackred"] label.input {
+  background-color: #ffffff !important;
+  color: hsl(210, 15%, 18%) !important;
+  border: 1px solid hsl(160, 80%, 20%) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.5rem !important;
+}
+
+[data-theme="blackred"] label.input input {
+  background: transparent !important;
+  color: hsl(210, 15%, 18%) !important;
+  border: none !important;
+  padding: 0 0.5rem !important;
+}
+
+[data-theme="blackred"] label.input input::placeholder {
+  color: hsl(210, 15%, 18%) !important;
+  opacity: 0.6 !important;
+}
+
+/* Calendar selected day button */
+[data-theme="blackred"] button.bg-primary {
+  background-color: #064e3b !important;
+}
+
+[data-theme="blackred"] button.bg-primary,
+[data-theme="blackred"] button.bg-primary * {
+  color: #064e3b !important;
+}
+
+/* Calendar generic styling */
+[data-theme="blackred"] .react-datepicker__day--selected,
+[data-theme="blackred"] .react-datepicker__day--highlighted {
+  background-color: hsl(160, 80%, 20%) !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+[data-theme="blackred"] .react-datepicker__day--selected *,
+[data-theme="blackred"] .react-datepicker__day--highlighted * {
+  color: #ffffff !important;
+}
+
+/* Generic calendar day styling */
+[data-theme="blackred"] .react-datepicker__day {
+  background-color: #ffffff !important;
+  color: hsl(210, 15%, 18%) !important;
+  border: 1px solid transparent !important;
+}
+
+[data-theme="blackred"] .react-datepicker__day:hover {
+  background-color: #f5f5f5 !important;
+  color: hsl(210, 15%, 18%) !important;
+}
+
+/* Calendar header and wrapper */
+[data-theme="blackred"] .react-datepicker,
+[data-theme="blackred"] .react-datepicker__header,
+[data-theme="blackred"] .react-datepicker__month-container {
+  background-color: #ffffff !important;
+  border: 1px solid hsl(160, 80%, 20%) !important;
+}
+
+/* Calendar month/year, week days text */
+[data-theme="blackred"] .react-datepicker__current-month,
+[data-theme="blackred"] .react-datepicker__day-name {
+  color: #064e3b !important;
+}
+
+/* Force all icon colors to match the dark green text color */
+[data-theme="blackred"] svg,
+[data-theme="blackred"] svg * {
+  fill: #064e3b !important;
+  stroke: #064e3b !important;
+}
+
+/* Force all text and outlines to dark green */
+[data-theme="blackred"] *,
+[data-theme="blackred"] *::before,
+[data-theme="blackred"] *::after {
+  color: #064e3b !important;
+  border-color: #064e3b !important;
+  outline-color: #064e3b !important;
+}
+
+[data-theme="blackred"] *::placeholder {
+  color: #064e3b !important;
+  opacity: 1 !important;
+}
+
+/* Ensure backgrounds stay white except when intentionally styled */
+[data-theme="blackred"] body,
+[data-theme="blackred"] html,
+[data-theme="blackred"] #root,
+[data-theme="blackred"] .card,
+[data-theme="blackred"] .navbar,
+[data-theme="blackred"] .btn,
+[data-theme="blackred"] .input,
+[data-theme="blackred"] .menu,
+[data-theme="blackred"] .dropdown-content {
+  background-color: #ffffff !important;
+}

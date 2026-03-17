@@ -48,41 +48,32 @@ const Header = () => {
 
 				{/* ───────────────────────────────✦. EVENT HUB LOGO .✦─────────────────────────────── */}
 				<div className="flex-1">
-					<a className="btn btn-ghost px-0 hover:bg-transparent" onClick={() => navigate(session ? "/dashboard" : "/")}>
+			<a className="btn btn-ghost px-0 hover:bg-transparent navbar-logo" onClick={() => navigate("/") }>
 						<div className="flex items-center gap-2.5">
 
 							{/* ───────────────────────────────✦. ICON .✦─────────────────────────────── */}
-							<div
-								className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-								style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))" }}
-							>
-								<svg width="15" height="15" viewBox="0 0 14 14" fill="none">
-									<rect x="1" y="3" width="12" height="10" rx="2" stroke="white" strokeWidth="1.5" />
-									<path d="M4 1v3M10 1v3" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-									<path d="M1 7h12" stroke="white" strokeWidth="1.5" />
-									<circle cx="4.5" cy="10" r="1" fill="white" />
-									<circle cx="7" cy="10" r="1" fill="white" />
-									<circle cx="9.5" cy="10" r="1" fill="white" />
-								</svg>
-							</div>
+						<div className="flex items-center justify-center shrink-0">
+							<svg width="20" height="20" viewBox="0 0 14 14" fill="none">
+								<rect x="1" y="3" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+								<path d="M4 1v3M10 1v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+								<path d="M1 7h12" stroke="currentColor" strokeWidth="1.5" />
+								<circle cx="4.5" cy="10" r="1" fill="currentColor" />
+								<circle cx="7" cy="10" r="1" fill="currentColor" />
+								<circle cx="9.5" cy="10" r="1" fill="currentColor" />
+							</svg>
+						</div>
 
 							{/* ───────────────────────────────✦. TEXT GRADIENT .✦─────────────────────────────── */}
-							<div className="flex flex-col items-center gap-0.5">
-								<span
-									className="text-lg font-black tracking-tight leading-none"
-									style={{
-										background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))",
-										WebkitBackgroundClip: "text",
-										WebkitTextFillColor: "transparent"
-									}}
-								>
-									Lorem<span className="font-light">Ipsum</span>
-								</span>
-								<span className="text-[8.5px] font-semibold tracking-[0.2em] uppercase text-base-content/40 leading-none">
-									Lorem Ipsum
-								</span>
-							</div>
-
+						<span
+							className="text-lg font-black tracking-tight leading-none"
+							style={{
+								background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))",
+								WebkitBackgroundClip: "text",
+								WebkitTextFillColor: "transparent"
+							}}
+						>
+							Event<span className="font-light">Hub</span>
+						</span>
 						</div>
 					</a>
 				</div>
@@ -101,104 +92,86 @@ const Header = () => {
 						</>
 					)}
 
-					{/* ───────────────────────────────✦. SIGNED IN AND THEME TOGGLE .✦─────────────────────────────── */}
-					{session && (
+				{/* ───────────────────────────────✦. LINK BUTTONS .✦─────────────────────────────── */}
+				{session && (
+					<>
 						<button
-							className="btn btn-ghost btn-sm btn-circle"
-							onClick={toggleTheme}
-							title="Toggle theme"
+							className="btn btn-ghost btn-sm"
+							onClick={() => navigate("/")}
+							title="Home"
 						>
-							{theme === "coffee"
-								? <Sun size={16} className="text-base-content" />
-								: <Moon size={16} className="text-base-content" />
-							}
+							Home
 						</button>
-					)}
+						<button
+							className="btn btn-ghost btn-sm"
+							onClick={() => navigate("/dashboard")}
+							title="Dashboard"
+						>
+							Dashboard
+						</button>
+					</>
+				)}
 
-					{/* ───────────────────────────────✦. ADMIN'S VIEW .✦─────────────────────────────── */}
-					{session && isAdmin && (
-						<>
-							{/* ───────────────────────────────✦. LIVE REGISTRATIONS COUNT .✦─────────────────────────────── */}
-							<div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-base-200 border border-base-300">
-								<Users size={13} className="text-primary" />
-								<span className="text-xs font-bold text-base-content">{totalRegistrations}</span>
-								<span className="text-xs text-base-content/50">registrations</span>
-							</div>
+			{session && !isAdmin && (
+				<div className="relative" ref={bellRef}>
+					<button
+						className="btn btn-ghost btn-sm btn-circle relative"
+						onClick={() => setBellOpen(prev => !prev)}
+						title="Notifications"
+					>
+						<Bell size={16} className="text-base-content" />
+						{notifications.length > 0 && (
+							<span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
+						)}
+					</button>
 
-							{/* ───────────────────────────────✦. CREATE EVENT SHORTCUT .✦─────────────────────────────── */}
-							<button
-								className="btn btn-primary btn-sm btn-circle"
-								onClick={() => navigate("/events?create=true")}
-								title="Create new event"
-							>
-								<Plus size={16} />
-							</button>
-						</>
-					)}
-
-					{/* ───────────────────────────────✦. USER'S VIEW AND NOTIFICATION BELL .✦─────────────────────────────── */}
-					{session && !isAdmin && (
-						<div className="relative" ref={bellRef}>
-							<button
-								className="btn btn-ghost btn-sm btn-circle relative"
-								onClick={() => setBellOpen(prev => !prev)}
-								title="Notifications"
-							>
-								<Bell size={16} className="text-base-content" />
-								{notifications.length > 0 && (
-									<span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
+					{/* ───────────────────────────────✦. DROPDOWN .✦─────────────────────────────── */}
+					{bellOpen && (
+						<div className="absolute right-0 mt-2 w-72 card bg-base-200 border border-base-300 shadow-xl z-50">
+							<div className="card-body p-3 gap-2">
+								<p className="text-xs font-bold text-base-content/50 uppercase tracking-widest px-1">
+									New This Week
+								</p>
+								{notifications.length === 0 ? (
+									<p className="text-xs text-base-content/40 text-center py-4">
+										No new events this week.
+									</p>
+								) : (
+									notifications.map((n) => (
+										<button
+											key={n.id}
+											className="flex flex-col gap-0.5 text-left px-2 py-2 rounded-lg hover:bg-base-300 transition-colors"
+											onClick={() => { navigate("/events"); setBellOpen(false); }}
+											>
+												<span className="text-sm font-semibold text-base-content">{n.title}</span>
+												<span className="text-xs text-base-content/50">
+													{new Date(n.date).toLocaleDateString("en-PH", { month: "short", day: "numeric", year: "numeric" })}
+												</span>
+											</button>
+									))
 								)}
-							</button>
-
-							{/* ───────────────────────────────✦. DROPDOWN .✦─────────────────────────────── */}
-							{bellOpen && (
-								<div className="absolute right-0 mt-2 w-72 card bg-base-200 border border-base-300 shadow-xl z-50">
-									<div className="card-body p-3 gap-2">
-										<p className="text-xs font-bold text-base-content/50 uppercase tracking-widest px-1">
-											New This Week
-										</p>
-										{notifications.length === 0 ? (
-											<p className="text-xs text-base-content/40 text-center py-4">
-												No new events this week.
-											</p>
-										) : (
-											notifications.map((n) => (
-												<button
-													key={n.id}
-													className="flex flex-col gap-0.5 text-left px-2 py-2 rounded-lg hover:bg-base-300 transition-colors"
-													onClick={() => { navigate("/events"); setBellOpen(false); }}
-												>
-													<span className="text-sm font-semibold text-base-content">{n.title}</span>
-													<span className="text-xs text-base-content/50">
-														{new Date(n.date).toLocaleDateString("en-PH", { month: "short", day: "numeric", year: "numeric" })}
-													</span>
-												</button>
-											))
-										)}
-									</div>
-								</div>
-							)}
+							</div>
 						</div>
 					)}
-
 				</div>
-			</div>
+			)}
 		</div>
-	);
+	</div>
+</div>
+);
 };
 
 // ───────────────────────────────✦. BACK BUTTON .✦───────────────────────────────
 export const BackButton = ({ to, label = "Back" }) => {
-	const navigate = useNavigate();
-	return (
-		<button
-			className="btn btn-ghost btn-sm gap-1 pl-1 w-fit"
-			onClick={() => to ? navigate(to) : navigate(-1)}
-		>
-			<ChevronLeft size={18} /> {label}
-		</button>
-	);
+  const navigate = useNavigate();
+  return <button
+    className="btn btn-ghost btn-sm gap-1 pl-1 w-fit"
+    onClick={() => to ? navigate(to) : navigate(-1)}
+  >
+    <ChevronLeft size={18} /> {label}
+  </button>;
 };
+
 
 // ───────────────────────────────✦. FOOTER .✦───────────────────────────────
 const Footer = () => (
@@ -329,6 +302,12 @@ export const UserSidebar = ({ events = [] }) => {
 	const { isAdmin, profile, avatarUrl } = useContext(RegisteredEventsContext);
 	const navigate = useNavigate();
 
+	const displayName = profile
+		? `${profile.firstname} ${profile.lastname}`.trim()
+		: session?.user?.user_metadata?.firstname
+		? `${session.user.user_metadata.firstname} ${session.user.user_metadata.lastname || ""}`.trim()
+		: session?.user?.email?.split("@")[0] || "User";
+
 	const handleSignout = async () => {
 		const { error } = await supabase.auth.signOut();
 		if (error) alert(error);
@@ -337,19 +316,12 @@ export const UserSidebar = ({ events = [] }) => {
 
 	return (
 		<div className="flex flex-col items-center gap-4 w-56 min-w-56">
-			{/* ───────────────────────────────✦. CALENDAR CARD .✦─────────────────────────────── */}
-			<div className="card bg-base-200 border border-base-300 shadow-lg w-full">
-				<div className="card-body p-3">
-					<Calendar events={events} />
-				</div>
-			</div>
-
 			{/* ───────────────────────────────✦. USER PROFILE AND NAVIGATION .✦─────────────────────────────── */}
 			<div className="card bg-base-200 border border-base-300 shadow-lg w-full">
 				<div className="card-body items-center text-center gap-3">
 					<UserAvatar avatarUrl={avatarUrl} profile={profile} size="w-20" />
 					<h2 className="text-base-content font-bold text-lg">
-						{profile ? `${profile.firstname} ${profile.lastname}` : session?.user?.email ?? "User"}
+						{displayName}
 					</h2>
 					<div className="divider my-0" />
 
@@ -385,6 +357,13 @@ export const UserSidebar = ({ events = [] }) => {
 					<button className="btn btn-ghost w-full justify-start gap-2 text-error" onClick={handleSignout}>
 						<LogOut size={16} /> Logout
 					</button>
+				</div>
+			</div>
+
+			{/* ───────────────────────────────✦. CALENDAR CARD .✦─────────────────────────────── */}
+			<div className="card bg-base-200 border border-base-300 shadow-lg w-full">
+				<div className="card-body p-3">
+					<Calendar events={events} />
 				</div>
 			</div>
 		</div>

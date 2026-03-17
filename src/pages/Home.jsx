@@ -84,36 +84,38 @@ const Home = () => {
 			<div className="flex flex-col items-center gap-0">
 
 				{/* ───────────────────────────────✦. HERO .✦─────────────────────────────── */}
-				<section className="w-full flex flex-col items-center text-center px-6 pt-16 pb-20 gap-6 relative overflow-hidden">
+			<section className="w-full flex items-center justify-between px-8 pt-16 pb-20 gap-16 relative overflow-hidden max-w-7xl mx-auto">
 
-					{/* ───────────────────────────────✦. MOVING BLOBS .✦─────────────────────────────── */}
-					<div className="anim-fade-in absolute inset-0 pointer-events-none">
-						<div className="blob-1 absolute top-16 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-						<div className="blob-2 absolute bottom-10 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-						<div className="blob-3 absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-					</div>
+				{/* ───────────────────────────────✦. MOVING BLOBS .✦─────────────────────────────── */}
+				<div className="anim-fade-in absolute inset-0 pointer-events-none">
+					<div className="blob-1 absolute top-16 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+					<div className="blob-2 absolute bottom-10 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+					<div className="blob-3 absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+				</div>
 
+				{/* ───────────────────────────────✦. LEFT CONTENT .✦─────────────────────────────── */}
+				<div className="flex flex-col gap-6 relative z-10 flex-1 max-w-lg">
 					{/* ───────────────────────────────✦. BADGE .✦─────────────────────────────── */}
-					<div className="anim-fade-up relative z-10">
+					<div className="anim-fade-up">
 						<span className="badge badge-primary badge-outline px-4 py-3 text-xs font-semibold tracking-widest uppercase gap-1">
-							<Sparkles size={11} /> Lorem ipsum
+							<Sparkles size={11} /> Event Hub
 						</span>
 					</div>
 
 					{/* ───────────────────────────────✦. HEADLINE .✦─────────────────────────────── */}
-					<h1 className="anim-fade-up-2 relative z-10 text-5xl sm:text-6xl font-black text-base-content leading-tight max-w-2xl">
-						Lorem ipsum dolor sit amet,
-						<span className="text-primary"> consectetur </span>
-						adipiscing elit.
+					<h1 className="anim-fade-up-2 text-5xl sm:text-6xl font-black text-base-content leading-tight">
+						Manage Events with
+						<span className="text-primary"> Event Hub </span>
+						— Your Complete Solution
 					</h1>
 
 					{/* ───────────────────────────────✦. SUBHEADING .✦─────────────────────────────── */}
-					<p className="anim-fade-up-3 relative z-10 text-base-content/60 text-lg max-w-md leading-relaxed">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<p className="anim-fade-up-3 text-base-content/60 text-lg leading-relaxed">
+						Event Hub is a powerful dashboard designed for admins and employees to create, manage, and organize events effortlessly. Track registrations, engage participants, and streamline your event planning workflow in one centralized platform.
 					</p>
 
 					{/* ───────────────────────────────✦. CTA BUTTONS .✦─────────────────────────────── */}
-					<div className="anim-fade-up-4 relative z-10 flex flex-wrap gap-3 justify-center">
+					<div className="anim-fade-up-4 flex flex-wrap gap-3">
 						<button
 							className="btn btn-primary btn-lg rounded-full px-8 shadow-lg hover:scale-105 transition-transform gap-2"
 							onClick={() => navigate("/auth?mode=signup")}
@@ -127,28 +129,39 @@ const Home = () => {
 							Sign In
 						</button>
 					</div>
+				</div>
 
-				</section>
+				{/* ───────────────────────────────✦. RIGHT IMAGE PLACEHOLDER .✦─────────────────────────────── */}
+				<div className="anim-fade-in relative z-10 hidden lg:flex items-center justify-center flex-1">
+					<div className="w-full max-w-xl h-96 bg-base-200/30 border-2 border-dashed border-base-content/20 rounded-2xl flex items-center justify-center">
+					<div className="text-center">
+						<div className="text-6xl text-base-content/30 mb-4">🖼️</div>
+						<p className="text-base-content/40 text-sm">Hero Image Placeholder</p>
+					</div>
+				</div>
+			</div>
 
-				{/* ───────────────────────────────✦. FEATURES .✦─────────────────────────────── */}
-				<section className="w-full max-w-4xl px-6 pb-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
+		</section>
+
+		{/* ───────────────────────────────✦. FEATURES .✦─────────────────────────────── */}
+		<section className="w-full max-w-4xl px-6 pb-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
 					{[
 						{
 							icon: <Calendar size={28} className="text-primary" />,
-							title: "Browse Events",
-							desc: "Find upcoming events and see all the details in one clean view.",
+							title: "Create & Manage Events",
+							desc: "Set up new events with all details, customization options, and scheduling tools in minutes.",
 							delay: "anim-slide-left"
 						},
 						{
 							icon: <Users size={28} className="text-primary" />,
-							title: "Easy Register",
-							desc: "One click to register. Track everything from your personal dashboard.",
+							title: "Track Registrations",
+							desc: "Monitor attendee signups, manage participant lists, and send updates in real-time.",
 							delay: "anim-fade-up-3"
 						},
 						{
 							icon: <Ticket size={28} className="text-primary" />,
-							title: "Your Tickets",
-							desc: "All your registered events in one place, ready when you need them.",
+							title: "Manage Tickets",
+							desc: "Generate, distribute, and validate tickets. Keep attendee information organized and secure.",
 							delay: "anim-slide-right"
 						},
 					].map((f) => (
@@ -169,9 +182,9 @@ const Home = () => {
 							<div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
 							<div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
 							<LayoutDashboard size={36} className="opacity-80 relative z-10" />
-							<h2 className="text-3xl font-black relative z-10">Ready to join?</h2>
-							<p className="opacity-80 text-sm max-w-xs relative z-10">
-								Create your account and start discovering events happening near you.
+						<h2 className="text-3xl font-black relative z-10">Start Managing Events Today</h2>
+						<p className="opacity-80 text-sm max-w-xs relative z-10">
+							Join Event Hub and get full control over your event management, from creation to attendee engagement.
 							</p>
 							<button
 								className="btn bg-white text-primary hover:bg-white/90 rounded-full px-8 relative z-10 hover:scale-105 transition-transform gap-2"

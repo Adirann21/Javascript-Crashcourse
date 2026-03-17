@@ -70,8 +70,8 @@ const Dashboard = () => {
                         </p>
                     </div>
 
-                    {/* ───────────────────────────────✦. STAT CARDS .✦─────────────────────────────── */}
-                    <div className="grid grid-cols-3 gap-4">
+                    {/* ───────────────────────────────✦. STAT CARDS (STACKED) .✦─────────────────────────────── */}
+                    <div className="flex flex-col gap-4">
                         <div className="card bg-primary text-primary-content shadow-sm">
                             <div className="card-body py-5 px-5">
                                 <Ticket size={20} className="opacity-70" />

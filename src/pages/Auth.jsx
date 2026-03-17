@@ -153,7 +153,15 @@ const Auth = () => {
                 ) : (
 
                     <Card>
-                        <p className="text-base-content">You are already signed in.</p>
+                        <div className="flex flex-col items-center gap-4">
+                            <p className="text-base-content">You are already signed in.</p>
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => navigate("/dashboard")}
+                            >
+                                Go to Dashboard
+                            </button>
+                        </div>
                     </Card>
                 )}
             </div>

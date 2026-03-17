@@ -20,16 +20,18 @@ function App() {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [profile, setProfile] = useState(null);
 	const [avatarUrl, setAvatarUrl] = useState(null);
-	const [theme, setTheme] = useState(
-		document.documentElement.getAttribute("data-theme") || "coffee"
-	);
+	const [theme, setTheme] = useState("blackred");
 	const [totalRegistrations, setTotalRegistrations] = useState(0);
 	const [notifications, setNotifications] = useState([]);
 
+	useEffect(() => {
+		document.documentElement.setAttribute("data-theme", "blackred");
+	}, []);
+
 	const toggleTheme = () => {
-		const newTheme = theme === "coffee" ? "caramellatte" : "coffee";
-		setTheme(newTheme);
-		document.documentElement.setAttribute("data-theme", newTheme);
+		// Keep the app on the black/red theme.
+		setTheme("blackred");
+		document.documentElement.setAttribute("data-theme", "blackred");
 	};
 
 	const fetchEvents = async () => {
