@@ -31,7 +31,6 @@ function App() {
 	}, []);
 
 	const toggleTheme = () => {
-		// Keep the app on the black/red theme.
 		setTheme("blackred");
 		document.documentElement.setAttribute("data-theme", "blackred");
 	};
@@ -68,7 +67,6 @@ function App() {
 		if (!error) setTotalRegistrations(count || 0);
 	};
 
-	// ───────────────────────────────✦. SHOW FUTURE EVENTS 1 WEEK FROM NOW .✦───────────────────────────────
 	const fetchNotifications = async (userId) => {
 		const today = new Date();
 		today.setHours(0, 0, 0, 0);
@@ -85,7 +83,6 @@ function App() {
 		if (!error) setNotifications(data || []);
 	};
 
-	// ───────────────────────────────✦. FETCH PROFILE + CHECK ADMIN .✦───────────────────────────────
 	useEffect(() => {
 		const fetchProfile = async () => {
 			if (!session) {
@@ -95,15 +92,23 @@ function App() {
 				setNotifications([]);
 				return;
 			}
+
+			// Removed avatar_url from select to isolate the 400 error
 			const { data, error } = await supabase
 				.from("profiles")
-				.select("role, firstname, lastname, avatar_url")
+				.select("role, firstname, lastname")
 				.eq("id", session.user.id)
 				.single();
+
+			// 🔍 DEBUG LOGS - remove after fixing
+			console.log("session user id:", session.user.id);
+			console.log("profile data:", data);
+			console.log("profile error:", error);
+			console.log("is admin?", data?.role === "admin");
+
 			if (!error) {
 				setIsAdmin(data.role === "admin");
 				setProfile(data);
-				setAvatarUrl(data.avatar_url || null);
 				if (data.role === "admin") {
 					fetchTotalRegistrations();
 				} else {
