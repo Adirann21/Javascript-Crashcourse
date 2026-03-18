@@ -42,7 +42,7 @@ const MyEvents = () => {
         setQrEvent(event);
         setQrModal(true);
         try {
-            // ───────────────────────────────✦. GET REGISTRATION ID .✦───────────────────────────────
+            
             const { data, error } = await supabase
                 .from("registrations")
                 .select("id")
@@ -51,7 +51,7 @@ const MyEvents = () => {
                 .single();
             if (error) throw error;
 
-            // ───────────────────────────────✦. PUT USER, EVENT AND REGISTRATION INFO IN QR .✦───────────────────────────────
+           
             const payload = JSON.stringify({
                 registrationId: data.id,
                 userId: session.user.id,
@@ -150,7 +150,7 @@ const MyEvents = () => {
                 </div>
             </div>
 
-            {/* ───────────────────────────────✦. QR TICKET MODAL .✦─────────────────────────────── */}
+     
             {qrModal && (
                 <div className="modal modal-open">
                     <div className="modal-box max-w-sm flex flex-col items-center gap-4">
@@ -161,7 +161,7 @@ const MyEvents = () => {
                             </button>
                         </div>
 
-                        {/* ───────────────────────────────✦. EVENT INFO .✦─────────────────────────────── */}
+                
                         <div className="w-full bg-base-300 rounded-xl p-4 flex flex-col gap-1 text-center">
                             <p className="font-bold text-base-content">{qrEvent?.title}</p>
                             <p className="text-xs text-base-content/50 flex items-center justify-center gap-1">
@@ -172,7 +172,7 @@ const MyEvents = () => {
                             </p>
                         </div>
 
-                        {/* ───────────────────────────────✦. QR CODE .✦─────────────────────────────── */}
+    
                         <div className="bg-white p-4 rounded-xl shadow-inner">
                             {loadingQr ? (
                                 <div className="w-70 h-70 flex items-center justify-center">

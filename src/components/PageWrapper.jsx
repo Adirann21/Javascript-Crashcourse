@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import supabase from "../utils/supabase";
 import { SessionContext } from "../context/SessionContext";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
 import Link from "./Link";
-	import {
+import {
 	Settings as SettingsIcon,
 	LogOut,
 	ChevronLeft,
@@ -21,14 +21,14 @@ import Link from "./Link";
 	Users
 } from "lucide-react";
 
-	const Header = () => {
+const Header = () => {
 	const session = useContext(SessionContext);
 	const { isAdmin, theme, toggleTheme, totalRegistrations, notifications } = useContext(RegisteredEventsContext);
 	const navigate = useNavigate();
 	const location = useLocation();
 	const isSignUp = location.search === "?mode=signup";
-	const [bellOpen, setBellOpen] = React.useState(false);
-	const bellRef = React.useRef(null);
+	const [bellOpen, setBellOpen] = useState(false);
+	const bellRef = useRef(null);
 
 	useEffect(() => {
 		const handleClickOutside = (e) => {
@@ -42,40 +42,39 @@ import Link from "./Link";
 
 	return (
 		<div className="navbar bg-base-300 shadow-sm relative z-50">
-	<div className="flex max-w-7xl mx-auto w-full">
+			<div className="flex max-w-7xl mx-auto w-full">
 
 				<div className="flex-1">
-			<a className="btn btn-ghost px-0 hover:bg-transparent navbar-logo" onClick={() => navigate("/") }>
+					<a className="btn btn-ghost px-0 hover:bg-transparent navbar-logo" onClick={() => navigate("/")}>
 						<div className="flex items-center gap-2.5">
 
-						<div className="flex items-center justify-center shrink-0">
-							<svg width="20" height="20" viewBox="0 0 14 14" fill="none">
-								<rect x="1" y="3" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-								<path d="M4 1v3M10 1v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-								<path d="M1 7h12" stroke="currentColor" strokeWidth="1.5" />
-								<circle cx="4.5" cy="10" r="1" fill="currentColor" />
-								<circle cx="7" cy="10" r="1" fill="currentColor" />
-								<circle cx="9.5" cy="10" r="1" fill="currentColor" />
-							</svg>
-						</div>
+							<div className="flex items-center justify-center shrink-0">
+								<svg width="20" height="20" viewBox="0 0 14 14" fill="none">
+									<rect x="1" y="3" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+									<path d="M4 1v3M10 1v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+									<path d="M1 7h12" stroke="currentColor" strokeWidth="1.5" />
+									<circle cx="4.5" cy="10" r="1" fill="currentColor" />
+									<circle cx="7" cy="10" r="1" fill="currentColor" />
+									<circle cx="9.5" cy="10" r="1" fill="currentColor" />
+								</svg>
+							</div>
 
-						<span
-							className="text-lg font-black tracking-tight leading-none"
-							style={{
-								background: "linear-gradient(135deg, var(--color-primary), var(--color-secondary))",
-								WebkitBackgroundClip: "text",
-								WebkitTextFillColor: "transparent"
-							}}
-						>
-							Event<span className="font-light">Hub</span>
-						</span>
+							<span
+								className="text-lg font-black tracking-tight leading-none"
+								style={{
+									background: "linear-gradient(135deg, #1b4d3e, #2d6a5c)",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Event<span className="font-light">Hub</span>
+							</span>
 						</div>
 					</a>
 				</div>
 
 				<div className="flex-none flex items-center gap-2">
 
-					{/* ───────────────────────────────✦. SIGNED OUT .✦─────────────────────────────── */}
 					{!session && (
 						<>
 							<Link to="/" linkText="Home" />
@@ -86,76 +85,73 @@ import Link from "./Link";
 						</>
 					)}
 
-				{/* ───────────────────────────────✦. LINK BUTTONS .✦─────────────────────────────── */}
-				{session && (
-					<>
-						<button
-							className="btn btn-ghost btn-sm"
-							onClick={() => navigate("/")}
-							title="Home"
-						>
-							Home
-						</button>
-						<button
-							className="btn btn-ghost btn-sm"
-							onClick={() => navigate("/dashboard")}
-							title="Dashboard"
-						>
-							Dashboard
-						</button>
-					</>
-				)}
+					{session && (
+						<>
+							<button
+								className="btn btn-ghost btn-sm"
+								onClick={() => navigate("/")}
+								title="Home"
+							>
+								Home
+							</button>
+							<button
+								className="btn btn-ghost btn-sm"
+								onClick={() => navigate("/dashboard")}
+								title="Dashboard"
+							>
+								Dashboard
+							</button>
+						</>
+					)}
 
-			{session && !isAdmin && (
-				<div className="relative" ref={bellRef}>
-					<button
-						className="btn btn-ghost btn-sm btn-circle relative"
-						onClick={() => setBellOpen(prev => !prev)}
-						title="Notifications"
-					>
-						<Bell size={16} className="text-base-content" />
-						{notifications.length > 0 && (
-							<span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
-						)}
-					</button>
-
-					{/* ───────────────────────────────✦. DROPDOWN .✦─────────────────────────────── */}
-					{bellOpen && (
-						<div className="absolute right-0 mt-2 w-72 card bg-base-200 border border-base-300 shadow-xl z-50">
-							<div className="card-body p-3 gap-2">
-								<p className="text-xs font-bold text-base-content/50 uppercase tracking-widest px-1">
-									New This Week
-								</p>
-								{notifications.length === 0 ? (
-									<p className="text-xs text-base-content/40 text-center py-4">
-										No new events this week.
-									</p>
-								) : (
-									notifications.map((n) => (
-										<button
-											key={n.id}
-											className="flex flex-col gap-0.5 text-left px-2 py-2 rounded-lg hover:bg-base-300 transition-colors"
-											onClick={() => { navigate("/events"); setBellOpen(false); }}
-											>
-												<span className="text-sm font-semibold text-base-content">{n.title}</span>
-												<span className="text-xs text-base-content/50">
-													{new Date(n.date).toLocaleDateString("en-PH", { month: "short", day: "numeric", year: "numeric" })}
-												</span>
-											</button>
-									))
+					{session && !isAdmin && (
+						<div className="relative" ref={bellRef}>
+							<button
+								className="btn btn-ghost btn-sm btn-circle relative"
+								onClick={() => setBellOpen(prev => !prev)}
+								title="Notifications"
+							>
+								<Bell size={16} className="text-base-content" />
+								{notifications.length > 0 && (
+									<span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
 								)}
-							</div>
+							</button>
+
+							{bellOpen && (
+								<div className="absolute right-0 mt-2 w-72 card bg-base-200 border border-base-300 shadow-xl z-50">
+									<div className="card-body p-3 gap-2">
+										<p className="text-xs font-bold text-base-content/50 uppercase tracking-widest px-1">
+											New This Week
+										</p>
+										{notifications.length === 0 ? (
+											<p className="text-xs text-base-content/40 text-center py-4">
+												No new events this week.
+											</p>
+										) : (
+											notifications.map((n) => (
+												<button
+													key={n.id}
+													className="flex flex-col gap-0.5 text-left px-2 py-2 rounded-lg hover:bg-base-300 transition-colors"
+													onClick={() => { navigate("/events"); setBellOpen(false); }}
+												>
+													<span className="text-sm font-semibold text-base-content">{n.title}</span>
+													<span className="text-xs text-base-content/50">
+														{new Date(n.date).toLocaleDateString("en-PH", { month: "short", day: "numeric", year: "numeric" })}
+													</span>
+												</button>
+											))
+										)}
+									</div>
+								</div>
+							)}
 						</div>
 					)}
 				</div>
-			)}
+			</div>
 		</div>
-	</div>
-</div>
-);
+	);
 };
 
-// ───────────────────────────────✦. BACK BUTTON .✦───────────────────────────────
 export const BackButton = ({ to, label = "Back" }) => {
   const navigate = useNavigate();
   return <button
@@ -166,22 +162,18 @@ export const BackButton = ({ to, label = "Back" }) => {
   </button>;
 };
 
-
-// ───────────────────────────────✦. FOOTER .✦───────────────────────────────
 const Footer = () => (
 	<footer
 		className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-7">
 	</footer>
 );
 
-// ───────────────────────────────✦. MAIN .✦───────────────────────────────
 const Main = ({ children, className }) => (
 	<main className={`flex-1 max-w-7xl mx-auto w-full md:px-2 lg:px-0 pt-5 ${className}`}>
 		{children}
 	</main>
 );
 
-// ───────────────────────────────✦. PAGE WRAPPER .✦───────────────────────────────
 const PageWrapper = ({ children, className }) => (
 	<div className="flex flex-col min-h-screen">
 		<Header />
@@ -190,26 +182,20 @@ const PageWrapper = ({ children, className }) => (
 	</div>
 );
 
-// ───────────────────────────────✦. CALENDAR .✦───────────────────────────────
 export const Calendar = ({ events = [] }) => {
-
-	// ───────────────────────────────✦. STATES .✦───────────────────────────────
 	const today = new Date();
 	const [currentDate, setCurrentDate] = React.useState(today);
 	const [selectedDate, setSelectedDate] = React.useState(today);
 
-	// ───────────────────────────────✦. DATES .✦───────────────────────────────
 	const year = currentDate.getFullYear();
 	const month = currentDate.getMonth();
 	const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	const firstDay = new Date(year, month, 1).getDay();
 	const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-	// ───────────────────────────────✦. MONTH NAVIGATION .✦───────────────────────────────
 	const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
 	const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
 
-	// ───────────────────────────────✦. DATE CHECK .✦───────────────────────────────
 	const isToday = (day) => day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
 	const isSelected = (day) => day === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear();
 	const hasEvent = (day) => events.some(event => {
@@ -217,13 +203,11 @@ export const Calendar = ({ events = [] }) => {
 		return d.getDate() === day && d.getMonth() === month && d.getFullYear() === year;
 	});
 
-	// ───────────────────────────────✦. EVENTS ON SELECTED DAY .✦───────────────────────────────
 	const selectedEvents = events.filter(event => {
 		const d = new Date(event.date + "T00:00:00");
 		return d.getDate() === selectedDate.getDate() && d.getMonth() === selectedDate.getMonth() && d.getFullYear() === selectedDate.getFullYear();
 	});
 
-	// ───────────────────────────────✦. CALENDAR UI .✦───────────────────────────────
 	const days = [];
 	for (let i = 0; i < firstDay; i++) days.push(<div key={`empty-${i}`} />);
 	for (let day = 1; day <= daysInMonth; day++) {
@@ -232,7 +216,7 @@ export const Calendar = ({ events = [] }) => {
 				className={`relative text-xs rounded-full w-7 h-7 flex items-center justify-center transition-colors
                     ${isSelected(day) ? "bg-primary text-primary-content font-bold" : ""}
                     ${isToday(day) && !isSelected(day) ? "border border-primary text-primary font-bold" : ""}
-                    ${!isSelected(day) && !isToday(day) ? "hover:bg-base-300 text-base-content" : ""}`}>
+                    ${!isSelected(day) && !isToday(day) ? "hover:bg-base-300 text-base-content/60" : ""}`}>
 				{day}
 				{hasEvent(day) && !isSelected(day) && (
 					<span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
@@ -241,7 +225,6 @@ export const Calendar = ({ events = [] }) => {
 		);
 	}
 
-	// ───────────────────────────────✦. CALENDAR PRETTIER UI .✦───────────────────────────────
 	return (
 		<div className="w-full">
 			<div className="flex items-center justify-between mb-2">
@@ -273,7 +256,6 @@ export const Calendar = ({ events = [] }) => {
 	);
 };
 
-// ───────────────────────────────✦. USER AVATAR .✦───────────────────────────────
 export const UserAvatar = ({ avatarUrl, profile, size = "w-20" }) => {
 	const initials = profile
 		? `${profile.firstname?.[0] ?? ""}${profile.lastname?.[0] ?? ""}`
@@ -290,7 +272,6 @@ export const UserAvatar = ({ avatarUrl, profile, size = "w-20" }) => {
 	);
 };
 
-// ───────────────────────────────✦. USER SIDEBAR .✦───────────────────────────────
 export const UserSidebar = ({ events = [] }) => {
 	const session = useContext(SessionContext);
 	const { isAdmin, profile, avatarUrl } = useContext(RegisteredEventsContext);
@@ -310,7 +291,6 @@ export const UserSidebar = ({ events = [] }) => {
 
 	return (
 		<div className="flex flex-col items-center gap-4 w-56 min-w-56">
-			{/* ───────────────────────────────✦. USER PROFILE AND NAVIGATION .✦─────────────────────────────── */}
 			<div className="card bg-base-200 border border-base-300 shadow-lg w-full">
 				<div className="card-body items-center text-center gap-3">
 					<UserAvatar avatarUrl={avatarUrl} profile={profile} size="w-20" />
@@ -319,7 +299,6 @@ export const UserSidebar = ({ events = [] }) => {
 					</h2>
 					<div className="divider my-0" />
 
-					{/* ───────────────────────────────✦. ADMIN OR USER .✦─────────────────────────────── */}
 					{isAdmin && (
 						<>
 							<button className="btn btn-ghost w-full justify-start gap-2" onClick={() => navigate("/dashboard")}>
@@ -344,7 +323,6 @@ export const UserSidebar = ({ events = [] }) => {
 						</>
 					)}
 
-					{/* ───────────────────────────────✦. SETTINGS AND LOGOUT .✦─────────────────────────────── */}
 					<button className="btn btn-ghost w-full justify-start gap-2" onClick={() => navigate("/settings")}>
 						<SettingsIcon size={16} /> Settings
 					</button>
@@ -354,7 +332,6 @@ export const UserSidebar = ({ events = [] }) => {
 				</div>
 			</div>
 
-			{/* ───────────────────────────────✦. CALENDAR CARD .✦─────────────────────────────── */}
 			<div className="card bg-base-200 border border-base-300 shadow-lg w-full">
 				<div className="card-body p-3">
 					<Calendar events={events} />
@@ -364,24 +341,21 @@ export const UserSidebar = ({ events = [] }) => {
 	);
 };
 
-// ───────────────────────────────✦. SETTINGS .✦───────────────────────────────
 export const Settings = () => {
 	const session = useContext(SessionContext);
 	const { profile, setAvatarUrl, avatarUrl } = useContext(RegisteredEventsContext);
 	const navigate = useNavigate();
 
-	// ───────────────────────────────✦. LOCAL STATE .✦───────────────────────────────
-	const [firstname, setFirstname] = React.useState("");
-	const [lastname, setLastname] = React.useState("");
-	const [newPassword, setNewPassword] = React.useState("");
-	const [confirmPassword, setConfirmPassword] = React.useState("");
-	const [avatarFile, setAvatarFile] = React.useState(null);
-	const [avatarPreview, setAvatarPreview] = React.useState(null);
-	const [savingAvatar, setSavingAvatar] = React.useState(false);
-	const [removingAvatar, setRemovingAvatar] = React.useState(false);
-	const fileInputRef = React.useRef(null);
+	const [firstname, setFirstname] = useState("");
+	const [lastname, setLastname] = useState("");
+	const [newPassword, setNewPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [avatarFile, setAvatarFile] = useState(null);
+	const [avatarPreview, setAvatarPreview] = useState(null);
+	const [savingAvatar, setSavingAvatar] = useState(false);
+	const [removingAvatar, setRemovingAvatar] = useState(false);
+	const fileInputRef = useRef(null);
 
-	// ───────────────────────────────✦. DISPLAY FIRST NAME ON USER PROFILE .✦───────────────────────────────
 	useEffect(() => {
 		if (profile) {
 			setFirstname(profile.firstname);
@@ -449,11 +423,9 @@ export const Settings = () => {
 				.eq("id", session.user.id);
 			if (dbError) throw dbError;
 
-			// ───────────────────────────────✦. GET FILE PATH FROM URL .✦───────────────────────────────
 			const bucketName = "profile-images";
 			const marker = `/${bucketName}/`;
 			const afterBucket = avatarUrl.split(marker)[1];
-			// Strip any query params (e.g. cache busters)
 			const filePath = afterBucket?.split("?")[0];
 
 			if (filePath) {
@@ -481,7 +453,6 @@ export const Settings = () => {
 			<div className="flex flex-col gap-6 p-4 max-w-2xl mx-auto w-full">
 				<BackButton to="/dashboard" label="Back to Dashboard" />
 
-				{/* ───────────────────────────────✦. PROFILE PIC .✦─────────────────────────────── */}
 				<div className="card bg-base-200 border border-base-300 shadow-lg">
 					<div className="card-body gap-4">
 						<h2 className="card-title text-base-content">Profile Picture</h2>
@@ -541,7 +512,6 @@ export const Settings = () => {
 					</div>
 				</div>
 
-				{/* ───────────────────────────────✦. CHANGE NAME .✦─────────────────────────────── */}
 				<div className="card bg-base-200 border border-base-300 shadow-lg">
 					<div className="card-body gap-4">
 						<h2 className="card-title text-base-content">Change Name</h2>
@@ -559,7 +529,6 @@ export const Settings = () => {
 					</div>
 				</div>
 
-				{/* ───────────────────────────────✦. CHANGE PASSWORD .✦─────────────────────────────── */}
 				<div className="card bg-base-200 border border-base-300 shadow-lg">
 					<div className="card-body gap-4">
 						<h2 className="card-title text-base-content">Change Password</h2>
@@ -584,3 +553,4 @@ export const Settings = () => {
 };
 
 export default PageWrapper;
+

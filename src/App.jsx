@@ -20,8 +20,10 @@ function App() {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [profile, setProfile] = useState(null);
 	const [avatarUrl, setAvatarUrl] = useState(null);
-	const [theme, setTheme] = useState("blackred");
+	const [theme, setTheme] = useState("whitedarkgreen");
+
 	const [totalRegistrations, setTotalRegistrations] = useState(0);
+
 	const [notifications, setNotifications] = useState([]);
 
 	useEffect(() => {

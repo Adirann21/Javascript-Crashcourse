@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-[data-theme="blackred"] {
+[data-theme="whitedarkgreen"] {
+
   --bc: 0 0% 100%;
   --b1: 0 0% 98%;
   --b2: 0 0% 96%;
@@ -185,12 +186,14 @@ html[data-theme="blackred"], body {
   color: #064e3b !important;
 }
 
-[data-theme="blackred"] .react-datepicker__day--selected,
-[data-theme="blackred"] .react-datepicker__day--highlighted {
+[data-theme="whitedarkgreen"] .react-datepicker__day--selected,
+[data-theme="whitedarkgreen"] .react-datepicker__day--highlighted {
   background-color: hsl(160, 80%, 20%) !important;
   color: #ffffff !important;
   font-weight: bold !important;
 }
+
+
 
 [data-theme="blackred"] .react-datepicker__day--selected *,
 [data-theme="blackred"] .react-datepicker__day--highlighted * {

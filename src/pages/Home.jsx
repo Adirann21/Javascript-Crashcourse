@@ -83,38 +83,38 @@ const Home = () => {
 
 			<div className="flex flex-col items-center gap-0">
 
-				{/* ───────────────────────────────✦. HERO .✦─────────────────────────────── */}
+				{}
 			<section className="w-full flex items-center justify-between px-8 pt-16 pb-20 gap-16 relative overflow-hidden max-w-7xl mx-auto">
 
-				{/* ───────────────────────────────✦. MOVING BLOBS .✦─────────────────────────────── */}
+			
 				<div className="anim-fade-in absolute inset-0 pointer-events-none">
-					<div className="blob-1 absolute top-16 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-					<div className="blob-2 absolute bottom-10 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-					<div className="blob-3 absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+					<div className="blob-1 absolute top-16 left-1/4 w-80 h-80 rounded-full blur-3xl" style={{ backgroundColor: "rgba(6, 78, 59, 0.1)" }} />
+					<div className="blob-2 absolute bottom-10 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: "rgba(15, 118, 110, 0.1)" }} />
+					<div className="blob-3 absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" style={{ backgroundColor: "rgba(6, 78, 59, 0.05)" }} />
 				</div>
 
-				{/* ───────────────────────────────✦. LEFT CONTENT .✦─────────────────────────────── */}
+				
 				<div className="flex flex-col gap-6 relative z-10 flex-1 max-w-lg">
-					{/* ───────────────────────────────✦. BADGE .✦─────────────────────────────── */}
+				
 					<div className="anim-fade-up">
 						<span className="badge badge-primary badge-outline px-4 py-3 text-xs font-semibold tracking-widest uppercase gap-1">
 							<Sparkles size={11} /> Event Hub
 						</span>
 					</div>
 
-					{/* ───────────────────────────────✦. HEADLINE .✦─────────────────────────────── */}
+				
 					<h1 className="anim-fade-up-2 text-5xl sm:text-6xl font-black text-base-content leading-tight">
 						Manage Events with
 						<span className="text-primary"> Event Hub </span>
 						— Your Complete Solution
 					</h1>
 
-					{/* ───────────────────────────────✦. SUBHEADING .✦─────────────────────────────── */}
+					
 					<p className="anim-fade-up-3 text-base-content/60 text-lg leading-relaxed">
 						Event Hub is a powerful dashboard designed for admins and employees to create, manage, and organize events effortlessly. Track registrations, engage participants, and streamline your event planning workflow in one centralized platform.
 					</p>
 
-					{/* ───────────────────────────────✦. CTA BUTTONS .✦─────────────────────────────── */}
+			
 					<div className="anim-fade-up-4 flex flex-wrap gap-3">
 						<button
 							className="btn btn-primary btn-lg rounded-full px-8 shadow-lg hover:scale-105 transition-transform gap-2"
@@ -131,19 +131,16 @@ const Home = () => {
 					</div>
 				</div>
 
-				{/* ───────────────────────────────✦. RIGHT IMAGE PLACEHOLDER .✦─────────────────────────────── */}
+			
 				<div className="anim-fade-in relative z-10 hidden lg:flex items-center justify-center flex-1">
 					<div className="w-full max-w-xl h-96 bg-base-200/30 border-2 border-dashed border-base-content/20 rounded-2xl flex items-center justify-center">
-					<div className="text-center">
-						<div className="text-6xl text-base-content/30 mb-4">🖼️</div>
-						<p className="text-base-content/40 text-sm">Hero Image Placeholder</p>
-					</div>
+					<img src="https://www.firmofthefuture.com/oidam/intuit/sbseg/en_us/Blog/Photography/Stock/hosting-business-event-us-en.png" alt="Hero" className="w-full h-full object-cover rounded-2xl" />
 				</div>
+
 			</div>
 
 		</section>
 
-		{/* ───────────────────────────────✦. FEATURES .✦─────────────────────────────── */}
 		<section className="w-full max-w-4xl px-6 pb-20 grid grid-cols-1 sm:grid-cols-3 gap-4">
 					{[
 						{
@@ -175,7 +172,7 @@ const Home = () => {
 					))}
 				</section>
 
-				{/* ───────────────────────────────✦. CTA BANNER .✦─────────────────────────────── */}
+			
 				<section className="anim-fade-up-4 w-full max-w-4xl px-6 pb-20">
 					<div className="card bg-primary text-primary-content shadow-xl overflow-hidden">
 						<div className="card-body items-center text-center gap-4 py-12 relative">
