@@ -151,17 +151,14 @@ function App() {
 		}}>
 			<SessionContext.Provider value={session}>
 				<Routes>
-					{/* ───────────────────────────────✦. PUBLIC PAGES .✦─────────────────────────────── */}
 					<Route path="/" element={<Home />} />
 					<Route path="/auth" element={<Auth />} />
 					<Route path="/settings" element={<Settings />} />
 
-					{/* ───────────────────────────────✦. USER PAGES .✦─────────────────────────────── */}
 					<Route path="/events" element={isAdmin ? <AdminEvents /> : <Events />} />
 					<Route path="/dashboard" element={isAdmin ? <AdminDashboard /> : <Dashboard />} />
 					<Route path="/my-events" element={<MyEvents />} />
 
-					{/* ───────────────────────────────✦. ADMIN PAGES .✦─────────────────────────────── */}
 					<Route path="/admin" element={<AdminEvents />} />
 					<Route path="/user-events" element={<MyEvents />} />
 				</Routes>

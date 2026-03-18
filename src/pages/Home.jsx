@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import PageWrapper from "../components/PageWrapper";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
+
 	Calendar,
 	Ticket,
 	LayoutDashboard,
@@ -13,8 +13,8 @@ import {
 const Home = () => {
 	const navigate = useNavigate();
 
-	// ───────────────────────────────✦. AESTHETIC STUFF .✦───────────────────────────────
 	return (
+
 		<PageWrapper>
 			<style>{`
                 @keyframes fadeUp {

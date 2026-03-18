@@ -2,8 +2,8 @@ import { NavLink } from "react-router";
 
 const Link = ({ to, linkText, variant = "nav", onClick }) => {
 
-	// ───────────────────────────────✦. BUTTON .✦───────────────────────────────
 	if (variant === "button") {
+
 		return (
 			<button className="text-primary font-bold link-hover" onClick={onClick}>
 				{linkText}

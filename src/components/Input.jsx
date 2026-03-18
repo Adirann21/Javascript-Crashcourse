@@ -1,5 +1,5 @@
-// ───────────────────────────────✦. FOR AUTH.JSX .✦───────────────────────────────
 const Input = ({ label, name, type, className, placeholder, onChange, required }) => {
+
 	return (
 		<fieldset className="fieldset">
 			<legend className="fieldset-legend">{label}</legend>

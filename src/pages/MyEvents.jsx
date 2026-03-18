@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import PageWrapper, { UserSidebar, BackButton } from "../components/PageWrapper";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
+
     QrCode,
     Ticket,
     Calendar,
