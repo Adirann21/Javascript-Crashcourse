@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useMemo } from "react";
 import PageWrapper, { UserSidebar, BackButton } from "../components/PageWrapper";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
+
     Calendar,
     Users,
     Eye,

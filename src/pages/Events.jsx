@@ -3,8 +3,8 @@ import { useNavigate } from "react-router";
 import PageWrapper, { UserSidebar, BackButton } from "../components/PageWrapper";
 import { SessionContext } from "../context/SessionContext";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
+
     QrCode,
     Ticket,
     Calendar,

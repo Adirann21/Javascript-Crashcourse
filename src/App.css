@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* White + Dark Green Theme */
 [data-theme="blackred"] {
   --bc: 0 0% 100%;
   --b1: 0 0% 98%;
@@ -21,13 +20,11 @@
   --base-content: 160 80% 20%;
   --neutral-content: 160 80% 20%;
 
-  /* Border / outline colors */
   --border: 160 80% 20%;
   --border-base-100: 160 80% 20%;
   --border-base-200: 160 80% 20%;
   --border-base-300: 160 80% 20%;
 
-  /* Custom helpers used in the layout (header gradients, etc.) */
   --color-primary: #064e3b;
   --color-secondary: #0f766e;
   --color-base: #ffffff;
@@ -39,12 +36,10 @@ html[data-theme="blackred"], body {
   background: #ffffff !important;
 }
 
-/* Ensure root container also stays white */
 #root {
   background: #ffffff !important;
 }
 
-/* Keep navbar and cards white with dark green outline */
 [data-theme="blackred"] .navbar {
   background-color: #ffffff !important;
   border-bottom: 2px solid #064e3b !important;
@@ -57,19 +52,16 @@ html[data-theme="blackred"], body {
   color: #064e3b !important;
 }
 
-/* Keep card body transparent so underlying card fill shows */
 [data-theme="blackred"] .card-body {
   background: transparent !important;
 }
 
-/* Force all text to dark green in this theme */
 [data-theme="blackred"] .text-base-content,
 [data-theme="blackred"] .text-white,
 [data-theme="blackred"] * {
   color: #064e3b !important;
 }
 
-/* Ensure utility text classes also use dark green */
 [data-theme="blackred"] .text-primary,
 [data-theme="blackred"] .text-secondary,
 [data-theme="blackred"] .text-accent,
@@ -90,7 +82,6 @@ html[data-theme="blackred"], body {
   color: #064e3b;
 }
 
-/* Primary buttons should be dark green with white text */
 [data-theme="blackred"] .btn.btn-primary,
 [data-theme="blackred"] .btn-primary {
   background: hsl(160, 80%, 20%) !important;
@@ -98,7 +89,6 @@ html[data-theme="blackred"], body {
   border-color: hsl(160, 80%, 20%) !important;
 }
 
-/* Outline/ghost buttons should have white background with green border */
 [data-theme="blackred"] .btn.btn-outline,
 [data-theme="blackred"] .btn.btn-ghost,
 [data-theme="blackred"] .btn.bg-white {
@@ -107,7 +97,6 @@ html[data-theme="blackred"], body {
   border-color: hsl(160, 80%, 20%) !important;
 }
 
-/* Small icon buttons should have no box and stay transparent */
 [data-theme="blackred"] .btn.btn-sm,
 [data-theme="blackred"] .btn.btn-circle {
   background: transparent !important;
@@ -123,7 +112,6 @@ html[data-theme="blackred"], body {
   color: #064e3b;
 }
 
-/* Ensure any borders/outlines appear dark green in this theme */
 [data-theme="blackred"] .border,
 [data-theme="blackred"] .border-base-100,
 [data-theme="blackred"] .border-base-200,
@@ -134,7 +122,6 @@ html[data-theme="blackred"], body {
   outline-color: #064e3b !important;
 }
 
-/* Remove rounded/clipped corners so boxes render cleanly */
 [data-theme="blackred"] .card,
 [data-theme="blackred"] .card-body,
 [data-theme="blackred"] .modal-box,
@@ -147,7 +134,6 @@ html[data-theme="blackred"], body {
   overflow: visible !important;
 }
 
-/* Style input fields to match the light background */
 [data-theme="blackred"] input,
 [data-theme="blackred"] textarea,
 [data-theme="blackred"] select {
@@ -166,7 +152,6 @@ html[data-theme="blackred"], body {
   background: #ffffff !important;
 }
 
-/* Search bar input styling */
 [data-theme="blackred"] .input-bordered,
 [data-theme="blackred"] .input[type="search"],
 [data-theme="blackred"] .input[type="text"],
@@ -191,7 +176,6 @@ html[data-theme="blackred"], body {
   opacity: 0.6 !important;
 }
 
-/* Calendar selected day button */
 [data-theme="blackred"] button.bg-primary {
   background-color: #064e3b !important;
 }
@@ -201,7 +185,6 @@ html[data-theme="blackred"], body {
   color: #064e3b !important;
 }
 
-/* Calendar generic styling */
 [data-theme="blackred"] .react-datepicker__day--selected,
 [data-theme="blackred"] .react-datepicker__day--highlighted {
   background-color: hsl(160, 80%, 20%) !important;
@@ -214,7 +197,6 @@ html[data-theme="blackred"], body {
   color: #ffffff !important;
 }
 
-/* Generic calendar day styling */
 [data-theme="blackred"] .react-datepicker__day {
   background-color: #ffffff !important;
   color: hsl(210, 15%, 18%) !important;
@@ -226,7 +208,6 @@ html[data-theme="blackred"], body {
   color: hsl(210, 15%, 18%) !important;
 }
 
-/* Calendar header and wrapper */
 [data-theme="blackred"] .react-datepicker,
 [data-theme="blackred"] .react-datepicker__header,
 [data-theme="blackred"] .react-datepicker__month-container {
@@ -234,20 +215,17 @@ html[data-theme="blackred"], body {
   border: 1px solid hsl(160, 80%, 20%) !important;
 }
 
-/* Calendar month/year, week days text */
 [data-theme="blackred"] .react-datepicker__current-month,
 [data-theme="blackred"] .react-datepicker__day-name {
   color: #064e3b !important;
 }
 
-/* Force all icon colors to match the dark green text color */
 [data-theme="blackred"] svg,
 [data-theme="blackred"] svg * {
   fill: #064e3b !important;
   stroke: #064e3b !important;
 }
 
-/* Force all text and outlines to dark green */
 [data-theme="blackred"] *,
 [data-theme="blackred"] *::before,
 [data-theme="blackred"] *::after {
@@ -261,7 +239,6 @@ html[data-theme="blackred"], body {
   opacity: 1 !important;
 }
 
-/* Ensure backgrounds stay white except when intentionally styled */
 [data-theme="blackred"] body,
 [data-theme="blackred"] html,
 [data-theme="blackred"] #root,

@@ -4,8 +4,7 @@ import supabase from "../utils/supabase";
 import { SessionContext } from "../context/SessionContext";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
 import Link from "./Link";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
 	Settings as SettingsIcon,
 	LogOut,
 	ChevronLeft,
@@ -22,8 +21,7 @@ import {
 	Users
 } from "lucide-react";
 
-// ───────────────────────────────✦. HEADER .✦───────────────────────────────
-const Header = () => {
+	const Header = () => {
 	const session = useContext(SessionContext);
 	const { isAdmin, theme, toggleTheme, totalRegistrations, notifications } = useContext(RegisteredEventsContext);
 	const navigate = useNavigate();
@@ -44,14 +42,12 @@ const Header = () => {
 
 	return (
 		<div className="navbar bg-base-300 shadow-sm relative z-50">
-			<div className="flex max-w-7xl mx-auto w-full">
+	<div className="flex max-w-7xl mx-auto w-full">
 
-				{/* ───────────────────────────────✦. EVENT HUB LOGO .✦─────────────────────────────── */}
 				<div className="flex-1">
 			<a className="btn btn-ghost px-0 hover:bg-transparent navbar-logo" onClick={() => navigate("/") }>
 						<div className="flex items-center gap-2.5">
 
-							{/* ───────────────────────────────✦. ICON .✦─────────────────────────────── */}
 						<div className="flex items-center justify-center shrink-0">
 							<svg width="20" height="20" viewBox="0 0 14 14" fill="none">
 								<rect x="1" y="3" width="12" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -63,7 +59,6 @@ const Header = () => {
 							</svg>
 						</div>
 
-							{/* ───────────────────────────────✦. TEXT GRADIENT .✦─────────────────────────────── */}
 						<span
 							className="text-lg font-black tracking-tight leading-none"
 							style={{
@@ -78,7 +73,6 @@ const Header = () => {
 					</a>
 				</div>
 
-				{/* ───────────────────────────────✦. RIGHT SIDE .✦─────────────────────────────── */}
 				<div className="flex-none flex items-center gap-2">
 
 					{/* ───────────────────────────────✦. SIGNED OUT .✦─────────────────────────────── */}

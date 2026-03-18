@@ -4,8 +4,7 @@ import PageWrapper, { BackButton } from "../components/PageWrapper";
 import { SessionContext } from "../context/SessionContext";
 import { RegisteredEventsContext } from "../context/RegisteredEventsContext";
 import supabase from "../utils/supabase";
-// ───────────────────────────────✦. CUSTOM ICONS .✦───────────────────────────────
-import {
+	import {
     Pencil,
     Trash2,
     Plus,
@@ -48,8 +47,9 @@ const AdminEvents = () => {
     // ───────────────────────────────✦. SCANNER STATES .✦───────────────────────────────
     const [showScanner, setShowScanner] = useState(false);
     const [scanResult, setScanResult] = useState(null);
-    const [scanStatus, setScanStatus] = useState(null); // ───✦."success" | "error".✦───
+    const [scanStatus, setScanStatus] = useState(null);
     const [scanMessage, setScanMessage] = useState("");
+
     const [marking, setMarking] = useState(false);
     const scannerRef = useRef(null);
     const html5QrRef = useRef(null);
